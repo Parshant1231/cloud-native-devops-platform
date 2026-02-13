@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudNative | DevOps Control Plane</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 0% 0%, #111827 0%, #000000 100%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .glass:hover {
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .terminal-text { font-family: 'Fira Code', monospace; }
+
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .animate-pulse-soft { animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-slate-200 min-h-screen">
+
+    <nav class="border-b border-white/10 px-8 py-4 flex justify-between items-center glass sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="p-2 bg-blue-600 rounded-lg shadow-lg shadow-blue-500/20">
+                <i data-lucide="layers" class="text-white w-5 h-5"></i>
+            </div>
+            <span class="text-xl font-bold tracking-tight">CloudNative<span class="text-blue-500">Platform</span></span>
+        </div>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+            <a href="#" class="hover:text-white transition">Deployments</a>
+            <a href="#" class="hover:text-white transition">Infrastructure</a>
+            <a href="#" class="hover:text-white transition">Security</a>
+            <div class="h-4 w-[1px] bg-white/10"></div>
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse-soft"></span>
+                <span class="text-xs text-slate-300">Cluster: aws-us-east-1</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <div class="mb-12">
+            <h1 class="text-5xl font-extrabold tracking-tight mb-4">
+                Deployment <span class="gradient-text">Overview</span>
+            </h1>
+            <p class="text-slate-400 text-lg max-w-2xl">
+                Orchestrating containerized microservices with automated CI/CD pipelines and real-time observability.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div class="glass p-6 rounded-2xl">
+                <div class="flex justify-between items-start mb-4">
+                    <i data-lucide="activity" class="text-blue-400 w-5 h-5"></i>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Health</span>
+                </div>
+                <div class="text-3xl font-bold mb-1">99.9%</div>
+                <div class="text-xs text-emerald-400 font-medium">System Operational</div>
+            </div>
+            
+            <div class="glass p-6 rounded-2xl">
+                <div class="flex justify-between items-start mb-4">
+                    <i data-lucide="box" class="text-purple-400 w-5 h-5"></i>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Pods</span>
+                </div>
+                <div class="text-3xl font-bold mb-1">24 Active</div>
+                <div class="text-xs text-slate-400 font-medium">Across 3 Clusters</div>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <div class="flex justify-between items-start mb-4">
+                    <i data-lucide="git-branch" class="text-orange-400 w-5 h-5"></i>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Builds</span>
+                </div>
+                <div class="text-3xl font-bold mb-1">128</div>
+                <div class="text-xs text-slate-400 font-medium text-orange-400/80">4 pending queue</div>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <div class="flex justify-between items-start mb-4">
+                    <i data-lucide="zap" class="text-yellow-400 w-5 h-5"></i>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Latency</span>
+                </div>
+                <div class="text-3xl font-bold mb-1">14ms</div>
+                <div class="text-xs text-emerald-400 font-medium">Excellent Performance</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#0a0a0a]">
+                <div class="bg-white/5 px-4 py-3 border-b border-white/10 flex justify-between items-center">
+                    <div class="flex gap-1.5">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <span class="text-[11px] terminal-text text-slate-500 uppercase font-bold tracking-widest">Pipeline Logs — v1.0.42</span>
+                </div>
+                <div class="p-6 terminal-text text-sm leading-relaxed overflow-y-auto max-h-[400px]">
+                    <div class="flex gap-3 mb-2">
+                        <span class="text-blue-500">❯</span>
+                        <span class="text-slate-300 italic">Starting build pipeline...</span>
+                    </div>
+                    <div class="flex gap-3 text-slate-500 mb-2">
+                        <span>[10:42:01]</span>
+                        <span>Pulling base image: node:20-alpine...</span>
+                    </div>
+                    <div class="flex gap-3 text-slate-500 mb-2">
+                        <span>[10:42:05]</span>
+                        <span>Running unit tests (142 passed, 0 failed)...</span>
+                    </div>
+                    <div class="flex gap-3 text-emerald-400 mb-2">
+                        <span>[10:42:12]</span>
+                        <span class="font-bold">✓ Docker Image built: cloud-native-app:sha
