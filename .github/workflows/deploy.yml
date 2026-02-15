@@ -36,7 +36,6 @@ jobs:
         script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/devops-app:latest
             docker stop devops-container || true
-            docker rm devops-container || true
-            # Kill any process using port 3000
+            docker rm -f devops-container || true
             sudo fuser -k 3000/tcp || true
             docker run -d --name devops-container -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/devops-app:latest
