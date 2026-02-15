@@ -590,6 +590,13 @@ terraform destroy
 
 ---
 
+### Step 0. Create a key-par (Terraform used)
+```bash
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/key-name
+```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5b13001d-acbc-4575-a3d9-1200bb02e78b" />
+
+
 ### Step 1.  Clone the Repository
 
 ```bash
@@ -603,6 +610,10 @@ cd cloud-native-devops-platform
 aws configure
 ```
 > ℹ️ Provide: AWS Access Key, AWS Secret Key, Region (e.g., ap-south-1)
+
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/eb019282-c06b-491f-9639-234e6045ab9b" />
+
 
 ### Step-3  Provision Infrastructure
 ```bash
@@ -701,3 +712,45 @@ git push origin main
 
 > Website View
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0d4655f7-d580-4f72-9d6f-e7491b0c4bf9" />
+
+
+
+
+## 📈 Future Improvements & Scalability
+
+This project can be extended with:
+
+- Auto Scaling Groups for horizontal scaling
+- Application Load Balancer for high availability
+- HTTPS configuration using SSL certificates
+- Blue-Green or Rolling deployments
+- Monitoring stack (Prometheus + Grafana)
+- Centralized logging
+- Kubernetes-based deployment
+
+These enhancements would make the system production-grade at enterprise level.
+
+
+## 💰 Cost Management
+
+To avoid unnecessary AWS charges:
+
+```bash
+terraform destroy
+```
+
+## 📊 Monitoring & Observability
+
+- EC2 metrics monitored via CloudWatch
+- CPU and memory usage can be tracked
+- Docker container status verified using `docker ps`
+- Logs accessible using `docker logs`
+
+>Monitoring ensures application health and availability.
+
+
+## 🎯 Conclusion
+
+This project demonstrates a complete DevOps production workflow, including infrastructure provisioning, containerization, CI/CD automation, and secure cloud deployment.
+
+It reflects real-world engineering practices used in modern cloud-native environments.
