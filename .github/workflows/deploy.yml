@@ -36,12 +36,9 @@ jobs:
         script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/devops-app:latest
             
-            CONTAINER_ID=$(docker ps -q --filter "publish=3000")
-            if [ ! -z "$CONTAINER_ID" ]; then
-              docker stop $CONTAINER_ID
-              docker rm -f $CONTAINER_ID
-            fi
+            docker ps -q --filter "publish=3000" | xargs -r docker stop
+            docker ps -aq --filter "publish=3000" | xargs -r docker rm
+
             docker rm -f devops-container || true
-            docker run -d --name devops-container -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/devops-app:latest            docker run -d --name devops-container --restart always -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/devops-app:latest
-            sleep 3
-            docker ps
+            
+            docker run -d --name devops-container -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/devops-app:latest            sleep 3
